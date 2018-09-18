@@ -62,6 +62,15 @@
       $this->{'set_players'}($players);
     }
 
+    function deal_summary() {
+      $descriptions = [];
+      $player_hands = $this->{'get_players'}();
+      for ( $i = 0; $i < $this->number_of_players; $i++ ) {
+        array_push($descriptions, "PLAYER ".($i + 1).": ".join(", ", $player_hands[$i]));
+      }
+      return $descriptions;
+    }
+
     private function create_players($number_of_players) {
       $players = [];
       for( $i = 0; $i < $number_of_players; $i++ ) {
