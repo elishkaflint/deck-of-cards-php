@@ -1,7 +1,11 @@
 <?php include("game.php"); ?>
 
 <?php
+
+  // Create a new deck of cards
   $game = new game;
-  $cards = $game->get_deck();
+  $game->{'generate_cards'}();
+  $cards = $game->{'get_deck'}();
   echo 'Cards are: ' . join(', ', $cards);
+
 ?>
