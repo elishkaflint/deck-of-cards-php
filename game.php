@@ -3,6 +3,9 @@
   class Game {
 
     var $deck;
+    var $players;
+    var $number_of_cards = 7;
+    var $number_of_players = 4;
 
     private function set_deck($cards) {
       $this->deck = $cards;
@@ -10,6 +13,14 @@
 
     function get_deck() {
       return $this->deck;
+    }
+
+    private function set_players($hands) {
+      $this->players = $hands;
+    }
+
+    function get_players() {
+      return $this->players;
     }
 
     function generate_cards() {
@@ -22,7 +33,6 @@
         }
       }
       $this->{'set_deck'}($cards);
-      return $this->{'get_deck'}();
     }
 
     function shuffle_cards() {
@@ -35,7 +45,29 @@
         $cards = $remaining_cards;
       }
       $this->{'set_deck'}($shuffled_cards);
-      return $this->{'get_deck'}();
+    }
+
+    function deal_cards() {
+      $cards = $this->{'get_deck'}();
+      $players = $this->{'create_players'}($this->number_of_players);
+      $count = 0;
+      for( $j = 0; $j < $this->number_of_cards; $j++ ) {
+        for( $k = 0; $k < $this->number_of_players; $k++) {
+          $players[$k][$j] = $cards[$count];
+          unset($cards[$count]);
+          $count += 1;
+        }
+      }
+      $this->{'set_deck'}($cards);
+      $this->{'set_players'}($players);
+    }
+
+    private function create_players($number_of_players) {
+      $players = [];
+      for( $i = 0; $i < $number_of_players; $i++ ) {
+        array_push($players, []);
+      }
+      return $players;
     }
 
   }
