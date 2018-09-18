@@ -4,7 +4,7 @@
 
     var $deck;
 
-    function set_deck($cards) {
+    private function set_deck($cards) {
       $this->deck = $cards;
     }
 
@@ -22,8 +22,21 @@
         }
       }
       $this->{'set_deck'}($cards);
+      return $this->{'get_deck'}();
     }
 
+    function shuffle_cards() {
+      $cards = $this->{'get_deck'}();
+      $shuffled_cards = [];
+      while (count($cards) > 0) {
+        $random_card = $cards[array_rand($cards)];
+        array_push($shuffled_cards, $random_card);
+        $remaining_cards = array_diff($cards, array($random_card));
+        $cards = $remaining_cards;
+      }
+      $this->{'set_deck'}($shuffled_cards);
+      return $this->{'get_deck'}();
+    }
 
   }
 
