@@ -24,6 +24,10 @@ To run it, use the command line:
 > php index.php
 ```
 
+#### Screenshot of the ultimate output
+
+![output](./output.png)
+
 ## LEARNINGS
 
 Some of the things I noticed when using PHP:
