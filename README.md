@@ -2,7 +2,7 @@
 
 ## SUMMARY
 
-An application to build a deck of cards which can be shuffled and dealt. This is my first attempt at coding in PHP and the code was completed in a couple of hours but has been spiked (ie. not test-driven).
+An application to build a deck of cards which can be shuffled and dealt. This is my first attempt at coding in PHP. The code was completed in a couple of hours and has been spiked (ie. not test-driven).
 
 ## TECHNICAL
 
@@ -11,7 +11,7 @@ An application to build a deck of cards which can be shuffled and dealt. This is
 #### Installing the code
 
 ```
-> git clone
+> git clone https://github.com/elishkaflint/deck-of-cards-php.git
 ```
 
 #### Running the script
