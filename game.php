@@ -3,7 +3,7 @@
   class Game {
 
     var $deck;
-    var $players;
+    var $dealt_hands;
     var $number_of_cards = 7;
     var $number_of_players = 4;
 
@@ -15,12 +15,12 @@
       return $this->deck;
     }
 
-    private function set_players($hands) {
-      $this->players = $hands;
+    private function set_dealt_hands($dealt_hands) {
+      $this->dealt_hands = $dealt_hands;
     }
 
-    function get_players() {
-      return $this->players;
+    function get_dealt_hands() {
+      return $this->dealt_hands;
     }
 
     function generate_cards() {
@@ -49,34 +49,34 @@
 
     function deal_cards() {
       $cards = $this->{'get_deck'}();
-      $players = $this->{'create_players'}($this->number_of_players);
+      $dealt_hands = $this->{'create_players'}($this->number_of_players);
       $count = 0;
       for( $j = 0; $j < $this->number_of_cards; $j++ ) {
         for( $k = 0; $k < $this->number_of_players; $k++) {
-          $players[$k][$j] = $cards[$count];
+          $dealt_hands[$k][$j] = $cards[$count];
           unset($cards[$count]);
           $count += 1;
         }
       }
       $this->{'set_deck'}($cards);
-      $this->{'set_players'}($players);
+      $this->{'set_dealt_hands'}($dealt_hands);
     }
 
     function deal_summary() {
       $descriptions = [];
-      $player_hands = $this->{'get_players'}();
+      $dealt_hands = $this->{'get_dealt_hands'}();
       for ( $i = 0; $i < $this->number_of_players; $i++ ) {
-        array_push($descriptions, "PLAYER ".($i + 1).": ".join(", ", $player_hands[$i]));
+        array_push($descriptions, "PLAYER ".($i + 1).": ".join(", ", $dealt_hands[$i]));
       }
       return $descriptions;
     }
 
     private function create_players($number_of_players) {
-      $players = [];
+      $dealt_hands = [];
       for( $i = 0; $i < $number_of_players; $i++ ) {
-        array_push($players, []);
+        array_push($dealt_hands, []);
       }
-      return $players;
+      return $dealt_hands;
     }
 
   }
